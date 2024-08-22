@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features - VisionX CFO</title>
+    <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="Visionxcfo.css">
+</head>
+<body>
+    <!-- Navigation Menu -->
+    <nav>
+        <ul>
+            <li><a href="Visionxcfo.html">Home</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="solutions.html">Solutions</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header>
+        <h1>Revolutionize Your Financial Management with VisionX CFO</h1>
+        <p>Advanced Tools for Multi-Currency, Cryptocurrency, and Comprehensive Financial Oversight</p>
+        <button>Get Started</button>
+        <button>Request a Demo</button>
+    </header>
+
+    <!-- Features Section -->
+    <section>
+        <h2>Key Features</h2>
+        <!-- Currency Conversion Form -->
+        <section>
+            <h3>Currency Conversion</h3>
+            <input type="number" id="currency-amount" placeholder="Amount">
+            <input type="text" id="from-currency" placeholder="From Currency (e.g., EUR)">
+            <input type="text" id="to-currency" placeholder="To Currency (e.g., USD)">
+            <button onclick="convertCurrency()">Convert</button>
+            <p id="currency-result"></p>
+        </section>
+
+        <!-- Cryptocurrency Price Form -->
+        <section>
+            <h3>Get Cryptocurrency Price</h3>
+            <input type="text" id="crypto-symbol" placeholder="Crypto Symbol (e.g., BTC)">
+            <input type="text" id="crypto-currency" placeholder="Currency (e.g., USD)">
+            <button onclick="getCryptoPrice()">Get Price</button>
+            <p id="crypto-price"></p>
+        </section>
+
+        <!-- Cryptocurrency Conversion Form -->
+        <section>
+            <h3>Convert Cryptocurrency</h3>
+            <input type="number" id="crypto-amount" placeholder="Amount">
+            <input type="text" id="crypto-symbol-convert" placeholder="Crypto Symbol (e.g., BTC)">
+            <input type="text" id="convert-to-currency" placeholder="To Currency (e.g., USD)">
+            <button onclick="convertCrypto()">Convert</button>
+            <p id="crypto-conversion"></p>
+        </section>
+    </section>
+
+    <script>
+        async function convertCurrency() {
+            const amount = document.getElementById('currency-amount').value;
+            const fromCurrency = document.getElementById('from-currency').value;
+            const toCurrency = document.getElementById('to-currency').value;
+        
+            const response = await fetch(`/convert_currency?amount=${amount}&from_currency=${fromCurrency}&to_currency=${toCurrency}`);
+            const data = await response.json();
+            document.getElementById('currency-result').textContent = `Converted Amount: ${data.converted_amount}`;
+        }
+
+        async function getCryptoPrice() {
+            const cryptoSymbol = document.getElementById('crypto-symbol').value;
+            const currency = document.getElementById('crypto-currency').value;
+        
+            const response = await fetch(`/get_crypto_price?crypto_symbol=${cryptoSymbol}&currency=${currency}`);
+            const data = await response.json();
+            document.getElementById('crypto-price').textContent = `Current Price: ${data.price}`;
+        }
+        
+        async function convertCrypto() {
+            const amount = document.getElementById('crypto-amount').value;
+            const cryptoSymbol = document.getElementById('crypto-symbol-convert').value;
+            const toCurrency = document.getElementById('convert-to-currency').value;
+        
+            const response = await fetch(`/convert_crypto?amount=${amount}&crypto_symbol=${cryptoSymbol}&to_currency=${toCurrency}`);
+            const data = await response.json();
+            document.getElementById('crypto-conversion').textContent = `Converted Amount: ${data.converted_amount}`;
+        }
+    </script>
+    <!-- Footer Section -->
+    <footer>
+        <p>© 2024 VisionX CFO. All Rights Reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,132 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e0f0ff; /* Light blue background for the whole page */
+}
+
+/* Navigation Menu */
+nav {
+    background-color: #003366; /* Dark blue for navigation bar */
+    color: #fff;
+    padding: 10px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Hero Section */
+header {
+    background-color: #003366; /* Dark blue background for hero section */
+    color: #fff;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #004080; /* Slightly lighter blue for buttons */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+header button:hover {
+    background-color: #0056a0; /* Darker blue on hover */
+}
+
+/* Features and Solutions Sections */
+section {
+    padding: 20px;
+    background-color: #cce0ff; /* Light blue background for sections */
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.features-container, .solutions-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.feature-item, .solution-item {
+    background-color: #b3cde0; /* Slightly darker blue for feature and solution items */
+    padding: 15px;
+    border-radius: 8px;
+    width: 45%;
+}
+
+/* About Us Section */
+section h3 {
+    margin-top: 20px;
+}
+
+/* Contact and Login Sections */
+form {
+    margin: 20px 0;
+}
+
+form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+form button {
+    padding: 5px 10px;
+    background-color: #004080; /* Blue background for form buttons */
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+}
+
+form button:hover {
+    background-color: #0056a0; /* Darker blue on hover */
+}
+
+/* Footer Section */
+footer {
+    background-color: #003366; /* Dark blue for footer */
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+footer a {
+    color: #ffcc00; /* Bright color for footer links */
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
