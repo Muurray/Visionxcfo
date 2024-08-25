@@ -128,14 +128,4 @@ footer {
 }
 
 .footer-column {
-    flex: 1;
-    margin: 0 10px;
-    min-width: 150px;
-}
-
-.footer-column h3 {
-    font-size: 1.2em;
-    margin-bottom: 0.5em;
-}
-
-.footer
+    flex: 1
