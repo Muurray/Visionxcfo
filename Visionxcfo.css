@@ -131,7 +131,7 @@ footer {
     background-color: #003366; /* Dark blue for footer */
     color: #fff;
     text-align: center;
-    padding: 20px 10px;
+    padding: 15px 10px;
 }
 
 .footer-columns {
@@ -161,7 +161,7 @@ footer {
 }
 
 .footer-column ul li a {
-    color: #3c00ff; /* Bright color for footer links */
+    color: #e5e0f7; 
     text-decoration: none;
 }
 
@@ -178,7 +178,7 @@ footer {
 }
 
 .footer-bottom a {
-    color: #ffcc00; /* Bright color for footer links */
+    color: #ffcc00; 
     text-decoration: none;
 }
 
