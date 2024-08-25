@@ -71,7 +71,7 @@ header button:hover {
 /* Features and Solutions Sections */
 section {
     padding: 20px;
-    background-color: #cce0ff; /* Light blue background for sections */
+    background-color: #59b6b6; /* Light blue background for sections */
 }
 
 h2 {
@@ -87,7 +87,7 @@ h2 {
 }
 
 .feature-item, .solution-item {
-    background-color: #b3cde0; /* Slightly darker blue for feature and solution items */
+    background-color: #2db88c; /* Slightly darker blue for feature and solution items */
     padding: 15px;
     border-radius: 8px;
     width: 45%;
