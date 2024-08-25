@@ -118,14 +118,4 @@ form button:hover {
 footer {
     background-color: #003366; /* Dark blue for footer */
     color: #fff;
-    padding: 20px;
-}
-
-.footer-columns {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-.footer-column {
-    flex: 1
+    padding
