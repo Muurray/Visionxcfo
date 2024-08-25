@@ -143,7 +143,7 @@ footer {
 }
 
 .footer-column {
-    flex: 1;
+    flex: 5;
     min-width: 180px;
 }
 
@@ -152,16 +152,16 @@ footer {
 }
 
 .footer-column ul {
-    list-style: none;
+    list-style-type: style;
     padding: 0;
 }
 
 .footer-column ul li {
-    margin: 5px 0;
+    margin: 5px 1;
 }
 
 .footer-column ul li a {
-    color: #ffcc00; /* Bright color for footer links */
+    color: #0066ff; /* Bright color for footer links */
     text-decoration: none;
 }
 
@@ -178,7 +178,7 @@ footer {
 }
 
 .footer-bottom a {
-    color: #ffcc00; /* Bright color for footer links */
+    color: hsl(248, 100%, 50%); /* Bright color for footer links */
     text-decoration: none;
 }
 
