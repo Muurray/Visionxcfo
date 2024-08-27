@@ -1,0 +1,71 @@
+import pandas as pd
+from pandas import DataFrame
+import numpy as np
+import datetime as dt
+from datetime import datetime,tzinfo
+from pytz import timezone
+import time
+import pytz
+import matplotlib.pyplot as plt
+import csv
+df_1= pd.read_csv('Coinbase/coinbase_Part1.csv')
+df_2 = pd.read_csv('Coinbase/coinbase_Part2.csv')
+frames = [df_1, df_2]
+df = pd.concat(frames, ignore_index=True)
+df_1= pd.read_csv('Coinbase/coinbase_Part1.csv')
+df_2 = pd.read_csv('Coinbase/coinbase_Part2.csv')
+frames = [df_1, df_2]
+df = pd.concat(frames, ignore_index=True)
+df.Timestamp = pd.to_datetime(df.Timestamp, unit='s')
+df.Timestamp = df.Timestamp.dt.tz_localize('UTC')
+del df_1, df_2
+df['Date'] = pd.to_datetime(df['Timestamp']).dt.date
+df['Time'] = pd.to_datetime(df['Timestamp']).dt.time
+del df['Timestamp'] #Delete original datetime column
+df.head()
+df['Hour'] = df.Time.apply(lambda x : x.hour)
+df['Minute'] = df.Time.apply(lambda x : x.minute)
+price3pmDF = df[(df.Hour == 15) & (df.Minute == 0)][['Date', 'Close']]
+price3pmDF.rename({'Close':'price'}, axis=1, inplace=True)
+price3pmDF.set_index('Date', inplace=True)
+price3pmDF.head()
+price
+Date	
+2024-12-01	370.00
+2024-12-02	378.00
+2024-12-03	378.00
+2025-01-08	289.25
+2025-01-13	260.00
+startDate = datetime.date(dt.datetime.strptime('01/23/18', '%x'))
+endDate = datetime.date(dt.datetime.strptime('03/27/18', '%x'))
+def computePriceDF (inputDF_, windowsize):
+    inputDF_['priceMean'] = inputDF_.price.rolling(windowsize).mean() 
+    inputDF_['priceSD'] = inputDF_.price.rolling(windowsize).std()
+    inputDF_['priceDiff'] = inputDF_.price.diff() / inputDF_.price.shift(1)
+    inputDF_['diffMean'] = inputDF_.priceDiff.rolling(windowsize).mean()
+    inputDF_['diffSD'] = inputDF_.priceDiff.rolling(windowsize).std()
+    inputDF_ = inputDF_.loc[startDate : endDate]
+    return {'pricePosiDate':inputDF_[inputDF_.price - inputDF_.priceMean > 2 * inputDF_.priceSD].index,
+           'priceNegeDate': inputDF_[inputDF_.price - inputDF_.priceMean < -2 * inputDF_.priceSD].index,
+           'priceDiffPosiDate': inputDF_[inputDF_.priceDiff - inputDF_.diffMean > 2 * inputDF_.diffSD].index,
+           'priceDiffNegeDate':inputDF_[inputDF_.priceDiff - inputDF_.diffMean < -2 * inputDF_.diffSD].index}
+for ws in [30, 45, 60, 75, 90]:
+    #wsDF = 
+    print ("for windowsize of %i:"%ws)
+    print (computePriceDF (price3pmDF, ws))
+    print ("==========================================")
+for windowsize of 30:
+{'pricePosiDate': Index([], dtype='object', name='Date'), 'priceNegeDate': Index([2018-02-05, 2018-03-15, 2018-03-17, 2018-03-18], dtype='object', name='Date'), 'priceDiffPosiDate': Index([2018-03-19], dtype='object', name='Date'), 'priceDiffNegeDate': Index([], dtype='object', name='Date')}
+==========================================
+for windowsize of 45:
+{'pricePosiDate': Index([], dtype='object', name='Date'), 'priceNegeDate': Index([2018-02-02, 2018-02-05, 2018-02-06], dtype='object', name='Date'), 'priceDiffPosiDate': Index([2018-03-19], dtype='object', name='Date'), 'priceDiffNegeDate': Index([], dtype='object', name='Date')}
+==========================================
+for windowsize of 60:
+{'pricePosiDate': Index([], dtype='object', name='Date'), 'priceNegeDate': Index([2018-02-02, 2018-02-05, 2018-02-06], dtype='object', name='Date'), 'priceDiffPosiDate': Index([2018-03-19], dtype='object', name='Date'), 'priceDiffNegeDate': Index([], dtype='object', name='Date')}
+==========================================
+for windowsize of 75:
+{'pricePosiDate': Index([], dtype='object', name='Date'), 'priceNegeDate': Index([], dtype='object', name='Date'), 'priceDiffPosiDate': Index([2018-03-19], dtype='object', name='Date'), 'priceDiffNegeDate': Index([], dtype='object', name='Date')}
+==========================================
+for windowsize of 90:
+{'pricePosiDate': Index([], dtype='object', name='Date'), 'priceNegeDate': Index([], dtype='object', name='Date'), 'priceDiffPosiDate': Index([], dtype='object', name='Date'), 'priceDiffNegeDate': Index([], dtype='object', name='Date')}
+==========================================
